@@ -19,17 +19,27 @@ a:active {
 }
 /********************************************************/
 #header{
-    /* align-items: center; */
     display: flex;
     justify-content: space-between;
     border: 1px solid rgba(179, 178, 178, 0.14);
 }
 #header > div{
     display: flex;
-    padding: 15px;
+    margin: 0 20px;
+    height: 80px;
 }
-#header .header-item{
-    padding: 10px;
+
+#header-blinkit-logo img{
+    height: 100%;
+    width: 100%;
+}
+
+#header-location-info{
+    margin: auto 30px;
+    font-weight: bolder;
+}
+#location{
+    border: 0px;
 }
 
 #header-mycart{
@@ -44,6 +54,7 @@ a:active {
     border-bottom-left-radius: 15px;
     color: white;
     font-weight: bolder;
+    padding: 10px;
 }
 #header-cart-button{
     background-color: #459220;
@@ -53,24 +64,14 @@ a:active {
     font-weight: bold;
     display: flex;
     align-items: center;
+    padding: 10px;
 }
 #header-login {
     margin: auto 30px;
     font-weight: 100;
     
 }
-#header-location-info{
-    margin: auto 30px;
-    font-weight: bolder;
-}
-#location{
-    border: 0px;
-}
-#header-item-1{
-    font-size: 50px;
-    font-weight: bolder;
 
-}
 /********************************************************/
 
 
