@@ -39,7 +39,7 @@ a:active {
     font-weight: bolder;
 }
 #location{
-    border: 0px;
+    border: none;
 }
 
 #header-mycart{
@@ -94,7 +94,7 @@ main{
     border: 1px solid rgb(187, 186, 186);
     margin: 0 auto;
     height: 800px;
-    width: 1050px;
+    width: 1052px;
 }
 
 /********************************************************/
@@ -137,6 +137,7 @@ main section{
     display: flex;
     justify-content: space-between;
     padding: 15px;
+    height: 18px;
 }
 #filter{
     width: 200px;
@@ -146,15 +147,16 @@ main section{
 }
 
 #section-bottom{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 750px;
 }
 
 .section-bottom-item{
     border: 1px solid black;
-    height: 248px;
-    max-width: 190px;
-    flex-grow: 1;
+    height: 240px;
+    min-width: 190px;
     padding: 4px;
 }
 
