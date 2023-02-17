@@ -1,10 +1,6 @@
-import {second_header_content, aside_content, section_bottom_content} from '../modals/index.js'
+import {get_aside_content,get_section_bottom_content} from './modal'
 
-var Second_header_item = function(name){
-    var element= document.createElement("div");
-    element.innerText=name;
-    return element;
-} 
+
 
 var Main_aside_item = function(info){
     var element= document.createElement("div");
@@ -38,6 +34,10 @@ var Main_section_bottom_item = function(info){
     var oldPrice= document.createElement("div");
     var newPrice= document.createElement("div");
     var add= document.createElement("button");
+    var cart_button= document.createElement("button");
+    var cart_button_minus= document.createElement("div");
+    var cart_button_quantity= document.createElement("div");
+    var cart_button_plus= document.createElement("div");
 
     element.className="section-bottom-item";
     discount_button.innerText=info.discount;
@@ -58,31 +58,35 @@ var Main_section_bottom_item = function(info){
     oldPrice.innerText=info.oldPrice;
     newPrice.innerText=info.newPrice;
     add.innerText="ADD";
+    cart_button.className="cart-button";
+    cart_button_minus.className="minus";
+    cart_button_quantity.className="quantity";
+    cart_button_plus.className="plus";
+    cart_button_minus.innerText="-";
+    cart_button_quantity.innerText="1";
+    cart_button_plus.innerText="+";
 
     element.append(discount_button,img_container,source_time,name,weight,price_add_section);
     price_add_section.append(price,add);
     price.append(newPrice,oldPrice);
-    // element.appendChild(img_container);
     img_container.appendChild(img);
-    // element.appendChild(source_time);
-    // element.appendChild(name);
-    console.log(element);
+    cart_button.append(cart_button_minus,cart_button_quantity,cart_button_plus);
+    price_add_section.appendChild(cart_button);
+    cart_button.style.display="none";
+
     return element;
 }
 
-for(let i=0;i<second_header_content.length;i++){
-    var item = Second_header_item(second_header_content[i]);
-    document.getElementById("second-header").appendChild(item);
-}
 
+
+var aside_content=get_aside_content();
 for(let i=0;i<aside_content.length;i++){
     var item = Main_aside_item(aside_content[i]);
     document.getElementsByTagName("aside")[0].appendChild(item);
 }
 
-
+var section_bottom_content=get_section_bottom_content();
 section_bottom_content.forEach(function(itemInfo){
     var newItem= Main_section_bottom_item(itemInfo);
-    console.log(newItem);
     document.getElementById("section-bottom").appendChild(newItem);
 });

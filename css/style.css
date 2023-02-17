@@ -1,6 +1,7 @@
 
 *{
     margin: 0;
+    font-family: 'Okra', Helvetica;
 }
 
 a:link {
@@ -32,11 +33,14 @@ a:active {
 #header-blinkit-logo img{
     height: 100%;
     width: 100%;
+    border-right: 1px solid  rgba(179, 178, 178, 0.14);
+    padding-right: 20px;
 }
 
 #header-location-info{
     margin: auto 30px;
     font-weight: bolder;
+    
 }
 #location{
     border: none;
@@ -213,10 +217,31 @@ main section{
 .section-bottom-item-price-add button{ 
     color: #459220;
     border: 1px solid #459220;
+    background-color: #caeeb9; 
     width: 100px;
     font-weight: bold;
     border-radius: 10%;
 }
+
+.cart-button{ 
+    border: 1px solid #459220;
+    width: 100px;
+    font-weight: bold;
+    border-radius: 10%;
+    display: flex;
+    margin-bottom: 0;
+    height: 30px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #459220; 
+    color: white;
+}
+
+.section-bottom-item-price-add button:hover{ 
+    background-color: #459220; 
+    color: white;
+}
+
 .new-price{
     height: 20px;
 }
