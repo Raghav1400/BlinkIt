@@ -1,6 +1,7 @@
-import {get_aside_content,get_section_bottom_content} from './modal'
 
+export var main_section_view=function (){
 
+}
 
 var Main_aside_item = function(info){
     var element= document.createElement("div");
@@ -78,15 +79,24 @@ var Main_section_bottom_item = function(info){
 }
 
 
-
-var aside_content=get_aside_content();
-for(let i=0;i<aside_content.length;i++){
-    var item = Main_aside_item(aside_content[i]);
-    document.getElementsByTagName("aside")[0].appendChild(item);
+main_section_view.prototype.render= function(spec){
+    var {aside_content,section_bottom_content} =spec;
+    for(let i=0;i<aside_content.length;i++){
+        var item = Main_aside_item(aside_content[i]);
+        document.getElementsByTagName("aside")[0].appendChild(item);
+    }
+    section_bottom_content.forEach(function(itemInfo){
+        var newItem= Main_section_bottom_item(itemInfo);
+        document.getElementById("section-bottom").appendChild(newItem);
+    });
 }
 
-var section_bottom_content=get_section_bottom_content();
-section_bottom_content.forEach(function(itemInfo){
-    var newItem= Main_section_bottom_item(itemInfo);
-    document.getElementById("section-bottom").appendChild(newItem);
-});
+
+
+
+
+
+
+
+
+

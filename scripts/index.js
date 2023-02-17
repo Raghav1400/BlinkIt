@@ -1,8 +1,22 @@
 import {main_section_control} from './main_section/control.js'
-import {main_section_control} from './main_section/view.js'
-import {main_section_control} from './main_section/modal.js'
+import {main_section_view} from './main_section/view.js'
+import {main_section_modal} from './main_section/modal.js'
+
+window.addEventListener("DOMContentLoaded",function(){
+    var spec= init(main_section_modal,main_section_control,main_section_view);
 
 
+    function init(Model,Controller,View) {
+        const modal = new Model();
+        const view = new View();
+        const controller = new Controller({
+          modal,
+          view,
+        });
+        return [modal,controller,view ];
+    }
+    spec[1].init();
+});
 
 
 

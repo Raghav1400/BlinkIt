@@ -1,9 +1,15 @@
-import {aside_content, section_bottom_content} from '../../data/content'
+import {aside_content, section_bottom_content} from '../../data/content.js'
 
-export function get_aside_content(){
+
+export var main_section_modal=function (){
+    this.aside_content=aside_content;
+    this.section_bottom_content=section_bottom_content;
+}
+
+main_section_modal.prototype.get_aside_content=function(){
     return aside_content;
 }
 
-export function get_section_bottom_content(){
+main_section_modal.prototype.get_section_bottom_content=function(){
     return section_bottom_content;
 }
