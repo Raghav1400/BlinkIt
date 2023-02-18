@@ -13,3 +13,13 @@ main_section_modal.prototype.get_aside_content=function(){
 main_section_modal.prototype.get_section_bottom_content=function(){
     return section_bottom_content;
 }
+
+main_section_modal.prototype.get_section_bottom_content_bySubCategory=function(subcategory){
+    var filterData=[];
+    section_bottom_content.forEach(function(element){
+        if(element.subcategory === subcategory){
+            filterData.push(element);
+        }
+    });
+    return filterData;
+}

@@ -9,9 +9,11 @@ var Main_aside_item = function(info){
     var element_second_child=document.createElement("div");
     var img_child=document.createElement("img");
 
+    element.setAttribute("category",info.category);
+    element.setAttribute("subcategory",info.subcategory);
     element_first_child.className="aside-img";
     element_second_child.className="aside-content";
-    element_second_child.innerText= info.decription;
+    element_second_child.innerText= info.subcategory;
     img_child.src= info.img_src;
     img_child.alt= info.img_alt;
 
@@ -40,6 +42,8 @@ var Main_section_bottom_item = function(info){
     var cart_button_quantity= document.createElement("div");
     var cart_button_plus= document.createElement("div");
 
+    element.setAttribute("category",info.category);
+    element.setAttribute("subcategory",info.subcategory);
     element.className="section-bottom-item";
     discount_button.innerText=info.discount;
     discount_button.className="discount-button";
@@ -91,10 +95,35 @@ main_section_view.prototype.render= function(spec){
     });
 }
 
+main_section_view.prototype.renderCards= function(spec){
+    var section_bottom_content =spec;
+    document.getElementById("section-bottom").innerHTML="";
+    section_bottom_content.forEach(function(itemInfo){
+        var newItem= Main_section_bottom_item(itemInfo);
+        document.getElementById("section-bottom").appendChild(newItem);
+    });
+}
+
+main_section_view.prototype.subcategoryEvent= function(control){
+    var subcategory = document.getElementsByTagName("aside")[0].children;
+    //console.log(this);
+    for(let i=0;i<subcategory.length;i++){
+        subcategory[i].addEventListener("click",function(event){
+            if(subcategory[i].contains(event.target)){
+                var subcategoryName=subcategory[i].getAttribute("subcategory");
+                // subcategory[i].style.backgroundColor="green";
+                control.asideFilter(subcategoryName);
+            }
+            
+        });
+    }
+
+}
 
 main_section_view.prototype.addToCartEvent= function(){
-    
+
 }
+
 
 
 

@@ -2,6 +2,7 @@ export var header_control=function(spec){
     var {modal,view} =spec;
     this.modal=modal;
     this.view=view;
+    
 }
 
 header_control.prototype.init=function(){
