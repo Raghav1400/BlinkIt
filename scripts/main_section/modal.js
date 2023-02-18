@@ -23,3 +23,22 @@ main_section_modal.prototype.get_section_bottom_content_bySubCategory=function(s
     });
     return filterData;
 }
+
+main_section_modal.prototype.get_section_bottom_content_byCategory=function(category){
+    var filter_aside_content=[];
+    var filter_section_bottom_content=[];
+
+    section_bottom_content.forEach(function(element){
+        if(element.category === category){
+            filter_section_bottom_content.push(element);
+        }
+    });
+
+    aside_content.forEach(function(element){
+        if(element.category === category){
+            filter_aside_content.push(element);
+        }
+    });
+
+    return [filter_aside_content,filter_section_bottom_content];
+}

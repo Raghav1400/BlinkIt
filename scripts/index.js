@@ -6,6 +6,8 @@ import {header_control} from './header/control.js'
 import {header_view} from './header/view.js'
 import {header_modal} from './header/modal.js'
 
+import { controls } from './controller.js'
+
 window.addEventListener("DOMContentLoaded",function(){
     var [mModal,mController,mView]= init(main_section_modal,main_section_control,main_section_view);
     var [hModal,hController,hView]= init(header_modal,header_control,header_view);
@@ -21,6 +23,7 @@ window.addEventListener("DOMContentLoaded",function(){
     }
     mController.init();
     hController.init();
+    controls.mController=mController;
 });
 
 

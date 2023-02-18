@@ -120,6 +120,23 @@ main_section_view.prototype.subcategoryEvent= function(control){
 
 }
 
+main_section_view.prototype.renderByCategory=function(aside_content,section_bottom_content,context){
+
+    document.getElementById("section-bottom").innerHTML="";
+    section_bottom_content.forEach(function(itemInfo){
+        var newItem= Main_section_bottom_item(itemInfo);
+        document.getElementById("section-bottom").appendChild(newItem);
+    });
+
+    //console.log(document.getElementsByName("aside"));
+    document.getElementsByTagName("aside")[0].innerHTML="";
+    for(let i=0;i<aside_content.length;i++){
+        var item = Main_aside_item(aside_content[i]);
+        document.getElementsByTagName("aside")[0].appendChild(item);
+    }
+    this.subcategoryEvent(context);
+}
+
 main_section_view.prototype.addToCartEvent= function(){
 
 }
