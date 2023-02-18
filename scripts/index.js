@@ -2,9 +2,13 @@ import {main_section_control} from './main_section/control.js'
 import {main_section_view} from './main_section/view.js'
 import {main_section_modal} from './main_section/modal.js'
 
-window.addEventListener("DOMContentLoaded",function(){
-    var [modal,controller,view]= init(main_section_modal,main_section_control,main_section_view);
+import {header_control} from './header/control.js'
+import {header_view} from './header/view.js'
+import {header_modal} from './header/modal.js'
 
+window.addEventListener("DOMContentLoaded",function(){
+    var [mModal,mController,mView]= init(main_section_modal,main_section_control,main_section_view);
+    var [hModal,hController,hView]= init(header_modal,header_control,header_view);
 
     function init(Model,Controller,View) {
         const modal = new Model();
@@ -15,7 +19,8 @@ window.addEventListener("DOMContentLoaded",function(){
         });
         return [modal,controller,view ];
     }
-    controller.init();
+    mController.init();
+    hController.init();
 });
 
 
@@ -38,13 +43,3 @@ window.addEventListener("DOMContentLoaded",function(){
 //     console.log(plusBtn);
 // });
 
-// for(let i=0;i<second_header_content.length;i++){
-//     var item = Second_header_item(second_header_content[i]);
-//     document.getElementById("second-header").appendChild(item);
-// }
-
-// var Second_header_item = function(name){
-//     var element= document.createElement("div");
-//     element.innerText=name;
-//     return element;
-// } 
