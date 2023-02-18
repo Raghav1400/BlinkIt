@@ -3,6 +3,7 @@ export var main_section_control = function(spec){
     var {modal,view} =spec;
     this.modal=modal;
     this.view=view;
+    this.view.addToCartEvent();
 }
 
 main_section_control.prototype.init=function(){

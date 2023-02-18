@@ -92,6 +92,10 @@ main_section_view.prototype.render= function(spec){
 }
 
 
+main_section_view.prototype.addToCartEvent= function(){
+    
+}
+
 
 
 

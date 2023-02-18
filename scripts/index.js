@@ -3,7 +3,7 @@ import {main_section_view} from './main_section/view.js'
 import {main_section_modal} from './main_section/modal.js'
 
 window.addEventListener("DOMContentLoaded",function(){
-    var spec= init(main_section_modal,main_section_control,main_section_view);
+    var [modal,controller,view]= init(main_section_modal,main_section_control,main_section_view);
 
 
     function init(Model,Controller,View) {
@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded",function(){
         });
         return [modal,controller,view ];
     }
-    spec[1].init();
+    controller.init();
 });
 
 
