@@ -24,25 +24,8 @@ window.addEventListener("DOMContentLoaded",function(){
     mController.init();
     hController.init();
     controls.mController=mController;
+    controls.hController=hController;
 });
 
 
-
-
-// var add_button_containers=document.getElementsByClassName("section-bottom-item-price-add");
-// var add_button_containers_array = Array.from(add_button_containers);
-// add_button_containers_array.forEach(function(container){
-//     container.getElementsByTagName("button")[0].addEventListener("click",function(){
-//         this.style.display="none";
-//         console.log(container.getElementsByClassName("cart-button"));
-//         container.getElementsByClassName("cart-button")[0].style.display="flex";
-//     });
-// });
-
-
-// var plusItem=Array.from(document.getElementsByClassName("plus"));
-
-// plusItem.forEach(function(plusBtn){
-//     console.log(plusBtn);
-// });
 

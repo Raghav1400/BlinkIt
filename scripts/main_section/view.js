@@ -58,10 +58,11 @@ var Main_section_bottom_item = function(info){
     weight.innerText=info.weight;
     price_add_section.className="section-bottom-item-price-add";
     price.className="price";
+    price.setAttribute("price",info.newPrice);
     oldPrice.className="old-price";
     newPrice.className="new-price";
-    oldPrice.innerText=info.oldPrice;
-    newPrice.innerText=info.newPrice;
+    oldPrice.innerText= "₹" + info.oldPrice;
+    newPrice.innerText="₹" + info.newPrice;
     add.innerText="ADD";
     cart_button.className="cart-button";
     cart_button_minus.className="minus";
@@ -113,11 +114,11 @@ main_section_view.prototype.subcategoryEvent= function(control){
                 var subcategoryName=subcategory[i].getAttribute("subcategory");
                 // subcategory[i].style.backgroundColor="green";
                 control.asideFilter(subcategoryName);
+                
             }
             
         });
     }
-
 }
 
 main_section_view.prototype.renderByCategory=function(aside_content,section_bottom_content,context){
@@ -134,13 +135,45 @@ main_section_view.prototype.renderByCategory=function(aside_content,section_bott
         var item = Main_aside_item(aside_content[i]);
         document.getElementsByTagName("aside")[0].appendChild(item);
     }
-    this.subcategoryEvent(context);
 }
 
-main_section_view.prototype.addToCartEvent= function(){
+main_section_view.prototype.addButtonEvent= function(control){
+    var add_button_containers=document.getElementsByClassName("section-bottom-item-price-add");
+    var add_button_containers_array = Array.from(add_button_containers);
+    add_button_containers_array.forEach(function(container){
+        container.getElementsByTagName("button")[0].addEventListener("click",function(event){
+            this.style.display="none";
+            container.getElementsByClassName("cart-button")[0].style.display="flex";
+
+        });
+    });
 
 }
 
+main_section_view.prototype.plusMinusEvent=function(control,hcontrol){
+    var add_button_containers=document.getElementsByClassName("section-bottom-item-price-add");
+    var add_button_containers_array = Array.from(add_button_containers);
+    add_button_containers_array.forEach(function(container){
+        var cart_button=container.getElementsByClassName("cart-button")[0];
+        cart_button.getElementsByClassName("minus")[0].addEventListener("click",function(event){
+            var quantity=cart_button.getElementsByClassName("quantity")[0].innerText;
+            quantity=Number(quantity)-1;
+            if(quantity===0){
+                container.getElementsByTagName("button")[0].removeAttribute("style");
+                container.getElementsByClassName("cart-button")[0].style.display="none";
+                quantity=1;
+            }
+            cart_button.getElementsByClassName("quantity")[0].innerText=quantity;
+        });
+        cart_button.getElementsByClassName("plus")[0].addEventListener("click",function(event){
+            var quantity=cart_button.getElementsByClassName("quantity")[0].innerText;
+            quantity=1+Number(quantity);
+            cart_button.getElementsByClassName("quantity")[0].innerText=quantity;
+            hcontrol.addCart("+",container.getElementsByClassName("price")[0].getAttribute("price"));
+        });
+    })
+        
+}
 
 
 

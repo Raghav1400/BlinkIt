@@ -15,3 +15,7 @@ header_control.prototype.init=function(){
 header_control.prototype.second_header_filter=function(category){
     controls.mController.category_filter(category);
 }
+
+header_control.prototype.addCart=function(symbol,price){
+    this.view.renderAddCart(symbol,price);
+};
