@@ -26,6 +26,48 @@ var Second_header_item = function(name){
     }
  }
 
+ var cartItemDetail =function(items,price){
+    var cartContainer=document.createElement("div");
+    var itemCount=document.createElement("div");
+    var itemPrice=document.createElement("div");
+    cartContainer.append(itemCount,itemPrice);
+    cartContainer.setAttribute("id","cart-info");
+    itemCount.innerText=items+ " Items";
+    itemPrice.innerText="₹"+price;
+    return cartContainer;
+ }
+
+ var createCartButton=function(){
+    var button=document.createElement("div");
+    button.innerText="My Cart";
+    button.setAttribute("id","header-cart-button");
+    return button;
+ }
+
  header_view.prototype.renderAddCart=function(cart){
-    //console.log(cart);
+    let price=0;
+    let items =0;
+    
+    for(var obj in cart){
+        items +=cart[obj].count;
+        price +=Number(cart[obj].newPrice)*Number(cart[obj].count);
+    };
+    if(document.getElementById("header-cart-button")){
+        document.getElementById("header-cart-button").remove();
+    }
+    
+    if(document.getElementById("cart-info")){
+        document.getElementById("cart-info").remove();
+    }
+    
+    
+    var cartInfo=cartItemDetail(items,price);
+    if(items!=0){
+        document.getElementById("header-mycart").append(cartInfo);
+    }
+    else{
+        var cartButton = createCartButton();
+        document.getElementById("header-mycart").append(cartButton);
+    }
+
  }

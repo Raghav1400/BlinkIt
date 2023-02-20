@@ -80,8 +80,7 @@ var section_bottom_content=[
 ]
 
 var cart={
-    price:0,
-    items:0,
+
 }
 
 export {second_header_content, aside_content,section_bottom_content,cart};

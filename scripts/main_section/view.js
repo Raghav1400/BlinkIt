@@ -152,7 +152,7 @@ main_section_view.prototype.addButtonEvent= function(control,hcontrol){
             container.getElementsByClassName("cart-button")[0].style.display="flex";
             container.getElementsByClassName("cart-button")[0].getElementsByClassName("quantity")[0].innerText=1;
             control.setQuantity(container.id,1);
-            //hcontrol.
+            hcontrol.addCart(container.id);
         });
     });
 
@@ -172,6 +172,7 @@ main_section_view.prototype.plusMinusEvent=function(control,hcontrol){
             }
             cart_button.getElementsByClassName("quantity")[0].innerText=quantity;
             control.setQuantity(container.id,quantity);
+            hcontrol.addCart(container.id);
         });
         cart_button.getElementsByClassName("plus")[0].addEventListener("click",function(event){
             var quantity=cart_button.getElementsByClassName("quantity")[0].innerText;

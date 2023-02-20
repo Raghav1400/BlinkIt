@@ -46,7 +46,7 @@ main_section_modal.prototype.get_section_bottom_content_byCategory=function(cate
 main_section_modal.prototype.setQuantity=function(id,quantity){
     section_bottom_content.forEach(function(element){
         if(element.id==id){
-            element.count =Number(quantity);
+            element.count = Number(quantity);
             return;
         }
     });

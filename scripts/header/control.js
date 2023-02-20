@@ -19,4 +19,5 @@ header_control.prototype.second_header_filter=function(category){
 header_control.prototype.addCart=function(id){
     var updatedCart=this.modal.updateCart(id);
     this.view.renderAddCart(updatedCart);
-};
+}
+
