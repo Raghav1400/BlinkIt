@@ -11,6 +11,8 @@ import { controls } from './controller.js'
 window.addEventListener("DOMContentLoaded",function(){
     var [mModal,mController,mView]= init(main_section_modal,main_section_control,main_section_view);
     var [hModal,hController,hView]= init(header_modal,header_control,header_view);
+    controls.mController=mController;
+    controls.hController=hController;
 
     function init(Model,Controller,View) {
         const modal = new Model();
@@ -23,8 +25,7 @@ window.addEventListener("DOMContentLoaded",function(){
     }
     mController.init();
     hController.init();
-    controls.mController=mController;
-    controls.hController=hController;
+    
 });
 
 

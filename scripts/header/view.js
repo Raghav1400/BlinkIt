@@ -26,6 +26,6 @@ var Second_header_item = function(name){
     }
  }
 
- header_view.prototype.renderAddcart=function(symbol,price){
-    
+ header_view.prototype.renderAddCart=function(cart){
+    //console.log(cart);
  }

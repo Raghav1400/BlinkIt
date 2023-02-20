@@ -57,6 +57,7 @@ var Main_section_bottom_item = function(info){
     weight.className="section-bottom-item-weight";
     weight.innerText=info.weight;
     price_add_section.className="section-bottom-item-price-add";
+    price_add_section.setAttribute("id",info.id);
     price.className="price";
     price.setAttribute("price",info.newPrice);
     oldPrice.className="old-price";
@@ -69,7 +70,7 @@ var Main_section_bottom_item = function(info){
     cart_button_quantity.className="quantity";
     cart_button_plus.className="plus";
     cart_button_minus.innerText="-";
-    cart_button_quantity.innerText="1";
+    cart_button_quantity.innerText=info.count;
     cart_button_plus.innerText="+";
 
     element.append(discount_button,img_container,source_time,name,weight,price_add_section);
@@ -79,6 +80,11 @@ var Main_section_bottom_item = function(info){
     cart_button.append(cart_button_minus,cart_button_quantity,cart_button_plus);
     price_add_section.appendChild(cart_button);
     cart_button.style.display="none";
+
+    if(info.count>=1){
+        cart_button.style.display="flex";
+        add.style.display="none";
+    }
 
     return element;
 }
@@ -137,14 +143,16 @@ main_section_view.prototype.renderByCategory=function(aside_content,section_bott
     }
 }
 
-main_section_view.prototype.addButtonEvent= function(control){
+main_section_view.prototype.addButtonEvent= function(control,hcontrol){
     var add_button_containers=document.getElementsByClassName("section-bottom-item-price-add");
     var add_button_containers_array = Array.from(add_button_containers);
     add_button_containers_array.forEach(function(container){
         container.getElementsByTagName("button")[0].addEventListener("click",function(event){
             this.style.display="none";
             container.getElementsByClassName("cart-button")[0].style.display="flex";
-
+            container.getElementsByClassName("cart-button")[0].getElementsByClassName("quantity")[0].innerText=1;
+            control.setQuantity(container.id,1);
+            //hcontrol.
         });
     });
 
@@ -161,15 +169,16 @@ main_section_view.prototype.plusMinusEvent=function(control,hcontrol){
             if(quantity===0){
                 container.getElementsByTagName("button")[0].removeAttribute("style");
                 container.getElementsByClassName("cart-button")[0].style.display="none";
-                quantity=1;
             }
             cart_button.getElementsByClassName("quantity")[0].innerText=quantity;
+            control.setQuantity(container.id,quantity);
         });
         cart_button.getElementsByClassName("plus")[0].addEventListener("click",function(event){
             var quantity=cart_button.getElementsByClassName("quantity")[0].innerText;
             quantity=1+Number(quantity);
             cart_button.getElementsByClassName("quantity")[0].innerText=quantity;
-            hcontrol.addCart("+",container.getElementsByClassName("price")[0].getAttribute("price"));
+            control.setQuantity(container.id,quantity);
+            hcontrol.addCart(container.id);
         });
     })
         

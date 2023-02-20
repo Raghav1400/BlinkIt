@@ -34,7 +34,8 @@ var aside_content=[
 ]
 
 var section_bottom_content=[
-   {   
+   {    
+        id:1,
         discount:"1% OFF",
         img_src:"./assects/391305a.webp",
         img_alt:"Potato Image",
@@ -45,8 +46,10 @@ var section_bottom_content=[
         oldPrice:"17" ,
         category:"Vegetable & Fruits",
         subcategory:"Fresh Fruits",
+        count:0,
     },
     {   
+        id:2,
         discount:"1% OFF",
         img_src:"./assects/391305a.webp",
         img_alt:"Potato Image",
@@ -56,9 +59,11 @@ var section_bottom_content=[
         newPrice:"15",
         oldPrice:"17" ,
         category:"Vegetable & Fruits",
-        subcategory:"Fresh Vegetables"
+        subcategory:"Fresh Vegetables",
+        count:0,
     },
     {   
+        id:3,
         discount:"1% OFF",
         img_src:"./assects/391305a.webp",
         img_alt:"Potato Image",
@@ -69,9 +74,14 @@ var section_bottom_content=[
         oldPrice:"17" ,
         category:"Cold Drinks & Juices",
         subcategory:"Cold Drinks",
+        count:0,
    }
 
 ]
 
+var cart={
+    price:0,
+    items:0,
+}
 
-export {second_header_content, aside_content,section_bottom_content};
+export {second_header_content, aside_content,section_bottom_content,cart};
