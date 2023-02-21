@@ -1,5 +1,5 @@
 
-export var main_section_view=function (){
+export var createMainSectionView=function (){
 
 }
 
@@ -90,8 +90,8 @@ var Main_section_bottom_item = function(info){
 }
 
 
-main_section_view.prototype.render= function(spec){
-    var {aside_content,section_bottom_content} =spec;
+createMainSectionView.prototype.render= function(content){
+    var {aside_content,section_bottom_content} =content;
     for(let i=0;i<aside_content.length;i++){
         var item = Main_aside_item(aside_content[i]);
         document.getElementsByTagName("aside")[0].appendChild(item);
@@ -102,7 +102,7 @@ main_section_view.prototype.render= function(spec){
     });
 }
 
-main_section_view.prototype.renderCards= function(spec){
+createMainSectionView.prototype.renderCards= function(spec){
     var section_bottom_content =spec;
     document.getElementById("section-bottom").innerHTML="";
     section_bottom_content.forEach(function(itemInfo){
@@ -111,7 +111,7 @@ main_section_view.prototype.renderCards= function(spec){
     });
 }
 
-main_section_view.prototype.subcategoryEvent= function(control){
+createMainSectionView.prototype.subcategoryEvent= function(control){
     var subcategory = document.getElementsByTagName("aside")[0].children;
     //console.log(this);
     for(let i=0;i<subcategory.length;i++){
@@ -127,7 +127,7 @@ main_section_view.prototype.subcategoryEvent= function(control){
     }
 }
 
-main_section_view.prototype.renderByCategory=function(aside_content,section_bottom_content,context){
+createMainSectionView.prototype.renderByCategory=function(aside_content,section_bottom_content,context){
 
     document.getElementById("section-bottom").innerHTML="";
     section_bottom_content.forEach(function(itemInfo){
@@ -143,7 +143,7 @@ main_section_view.prototype.renderByCategory=function(aside_content,section_bott
     }
 }
 
-main_section_view.prototype.addButtonEvent= function(control,hcontrol){
+createMainSectionView.prototype.addButtonEvent= function(control,hcontrol){
     var add_button_containers=document.getElementsByClassName("section-bottom-item-price-add");
     var add_button_containers_array = Array.from(add_button_containers);
     add_button_containers_array.forEach(function(container){
@@ -158,7 +158,7 @@ main_section_view.prototype.addButtonEvent= function(control,hcontrol){
 
 }
 
-main_section_view.prototype.plusMinusEvent=function(control,hcontrol){
+createMainSectionView.prototype.plusMinusEvent=function(control,hcontrol){
     var add_button_containers=document.getElementsByClassName("section-bottom-item-price-add");
     var add_button_containers_array = Array.from(add_button_containers);
     add_button_containers_array.forEach(function(container){

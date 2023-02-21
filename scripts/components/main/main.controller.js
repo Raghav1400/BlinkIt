@@ -1,12 +1,12 @@
-import { controls } from "../controller.js";
+import { controls } from "../../utils/constant.js";
 
-export var main_section_control = function(spec){
+export var createMainControl = function(spec){
     var {modal,view} =spec;
     this.modal=modal;
     this.view=view;
 }
 
-main_section_control.prototype.init=function(){
+createMainControl.prototype.init=function(){
     var aside_content=this.modal.get_aside_content();
     var section_bottom_content=this.modal.get_section_bottom_content();
     this.view.render({aside_content,section_bottom_content});
@@ -16,14 +16,14 @@ main_section_control.prototype.init=function(){
 
 }
 
-main_section_control.prototype.asideFilter=function(subcategory){
+createMainControl.prototype.asideFilter=function(subcategory){
     var data=this.modal.get_section_bottom_content_bySubCategory(subcategory);
     this.view.renderCards(data);
     this.view.addButtonEvent(this,controls.hController);
     this.view.plusMinusEvent(this,controls.hController);
 }
 
-main_section_control.prototype.category_filter=function(category){
+createMainControl.prototype.category_filter=function(category){
     var [asideData,mainData]=this.modal.get_section_bottom_content_byCategory(category);
     this.view.renderByCategory(asideData,mainData,this);
     this.view.subcategoryEvent(this);
@@ -31,6 +31,6 @@ main_section_control.prototype.category_filter=function(category){
     this.view.plusMinusEvent(this,controls.hController);
 }
 
-main_section_control.prototype.setQuantity=function(itemId,quantity){
+createMainControl.prototype.setQuantity=function(itemId,quantity){
     this.modal.setQuantity(itemId,quantity);
 }

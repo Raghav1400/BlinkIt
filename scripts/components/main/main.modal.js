@@ -1,20 +1,20 @@
-import {aside_content, section_bottom_content} from '../../data/content.js'
+import {aside_content, section_bottom_content} from '../../../data/content.js'
 
 
-export var main_section_modal=function (){
+export var createMainSectionModal=function (){
     this.aside_content=aside_content;
     this.section_bottom_content=section_bottom_content;
 }
 
-main_section_modal.prototype.get_aside_content=function(){
+createMainSectionModal.prototype.get_aside_content=function(){
     return aside_content;
 }
 
-main_section_modal.prototype.get_section_bottom_content=function(){
+createMainSectionModal.prototype.get_section_bottom_content=function(){
     return section_bottom_content;
 }
 
-main_section_modal.prototype.get_section_bottom_content_bySubCategory=function(subcategory){
+createMainSectionModal.prototype.get_section_bottom_content_bySubCategory=function(subcategory){
     var filterData=[];
     section_bottom_content.forEach(function(element){
         if(element.subcategory === subcategory){
@@ -24,7 +24,7 @@ main_section_modal.prototype.get_section_bottom_content_bySubCategory=function(s
     return filterData;
 }
 
-main_section_modal.prototype.get_section_bottom_content_byCategory=function(category){
+createMainSectionModal.prototype.get_section_bottom_content_byCategory=function(category){
     var filter_aside_content=[];
     var filter_section_bottom_content=[];
 
@@ -43,7 +43,7 @@ main_section_modal.prototype.get_section_bottom_content_byCategory=function(cate
     return [filter_aside_content,filter_section_bottom_content];
 }
 
-main_section_modal.prototype.setQuantity=function(id,quantity){
+createMainSectionModal.prototype.setQuantity=function(id,quantity){
     section_bottom_content.forEach(function(element){
         if(element.id==id){
             element.count = Number(quantity);
