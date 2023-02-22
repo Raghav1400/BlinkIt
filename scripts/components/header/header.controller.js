@@ -1,19 +1,17 @@
-import { controls } from "../../utils/constant.js";
+import { controls } from "../../index.helper.js";
 export var createHeaderControl=function(spec){
     var {modal,view} =spec;
     this.modal=modal;
     this.view=view;
-    
 }
 
 createHeaderControl.prototype.init=function(){
-    var second_header_content=this.modal.getSecondHeaderContent();
-    this.view.renderCategory(second_header_content);
-    this.view.addCategoryEvent(this);
+    var categories=this.modal.getCategories();
+    this.view.renderCategory(categories,this);
 }
 
 createHeaderControl.prototype.callCategoryFilter=function(category){
-    controls.mController.renderCategoryFilter(category);
+    controls.mainController.renderCategoryFilter(category);
 }
 
 createHeaderControl.prototype.addCart=function(id){

@@ -1,24 +1,23 @@
-import { createCategory, createCartItemDetailContainer, createCartButton } from "../../utils/helper.js";
+import { createCategory, createCartItemDetailContainer, createCartButton } from "./header.helper.js";
 
 export var createHeaderView=function (){
 
 }
 
-createHeaderView.prototype.renderCategory = function(data){
+createHeaderView.prototype.renderCategory = function(data,headController){
     for(let i=0;i<data.length;i++){
         var item = createCategory(data[i]);
+        this.addCategoryEvent(item,headController);
         document.getElementById("second-header").appendChild(item);
     }
 }
 
-createHeaderView.prototype.addCategoryEvent=function(control){
-    var category=document.getElementById("second-header").children;
-    for(let i=0;i<category.length;i++){
-        category[i].addEventListener("click",function(event){
-            var categoryName=category[i].getAttribute("category");
-            control.callCategoryFilter(categoryName);
-        })
-    }
+createHeaderView.prototype.addCategoryEvent=function(item,headController){
+    item.addEventListener("click",function(event){
+        var categoryName=item.getAttribute("category");
+        headController.callCategoryFilter(categoryName);
+    })
+    
 }
 
 createHeaderView.prototype.renderAddCartButtonInfo=function(cart){

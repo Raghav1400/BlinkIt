@@ -3,7 +3,7 @@ import {second_header_content,section_bottom_content,cart} from '../../../data/c
 export var createHeaderModal=function (){
 }
 
-createHeaderModal.prototype.getSecondHeaderContent=function(){
+createHeaderModal.prototype.getCategories=function(){
     return second_header_content;
 }
 

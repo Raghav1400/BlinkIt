@@ -1,10 +1,9 @@
 
-import { createCard,createSubcategory } from "../../utils/helper.js";
+import { createCard,createSubcategory } from "./main.helper.js";
 export var createMainSectionView=function (){
-
 }
 
-createMainSectionView.prototype.renderData= function(content,mcontrol,hcontrol){
+createMainSectionView.prototype.renderData= function(content,mainController,headController){
     var {subcategories,cards} =content;
     if(subcategories.length!=0){
         document.getElementsByTagName("aside")[0].innerHTML="";
@@ -13,12 +12,13 @@ createMainSectionView.prototype.renderData= function(content,mcontrol,hcontrol){
     
     for(let i=0;i<subcategories.length;i++){
         var item = createSubcategory(subcategories[i]);
-        this.addSubcategoryEvent(item,mcontrol);
+        this.addSubcategoryEvent(item,mainController);
         document.getElementsByTagName("aside")[0].appendChild(item);
     }
     for(let i=0;i<cards.length;i++){
         var newItem= createCard(cards[i]);
-        this.addAddButtonEvent(newItem,mcontrol,hcontrol)
+        this.addAddButtonEvent(newItem,mainController,headController);
+        this.addPlusMinusEvent(newItem,mainController,headController);
         document.getElementById("section-bottom").appendChild(newItem);
     };
 }
@@ -31,6 +31,7 @@ createMainSectionView.prototype.addSubcategoryEvent= function(item,control){
         }
     });
 }
+
 createMainSectionView.prototype.addAddButtonEvent= function(item,mcontrol,hcontrol){
     var add_button_container=item.getElementsByClassName("section-bottom-item-price-add")[0];
     add_button_container.getElementsByTagName("button")[0].addEventListener("click",function(event){
@@ -42,38 +43,25 @@ createMainSectionView.prototype.addAddButtonEvent= function(item,mcontrol,hcontr
     });
 }
 
-createMainSectionView.prototype.addPlusMinusEvent=function(control,hcontrol){
-    var add_button_containers=document.getElementsByClassName("section-bottom-item-price-add");
-    var add_button_containers_array = Array.from(add_button_containers);
-    add_button_containers_array.forEach(function(container){
-        var cart_button=container.getElementsByClassName("cart-button")[0];
-        cart_button.getElementsByClassName("minus")[0].addEventListener("click",function(event){
-            var quantity=cart_button.getElementsByClassName("quantity")[0].innerText;
-            quantity=Number(quantity)-1;
-            if(quantity===0){
-                container.getElementsByTagName("button")[0].removeAttribute("style");
-                container.getElementsByClassName("cart-button")[0].style.display="none";
-            }
-            cart_button.getElementsByClassName("quantity")[0].innerText=quantity;
-            control.setQuantity(container.id,quantity);
-            hcontrol.addCart(container.id);
-        });
-        cart_button.getElementsByClassName("plus")[0].addEventListener("click",function(event){
-            var quantity=cart_button.getElementsByClassName("quantity")[0].innerText;
-            quantity=1+Number(quantity);
-            cart_button.getElementsByClassName("quantity")[0].innerText=quantity;
-            control.setQuantity(container.id,quantity);
-            hcontrol.addCart(container.id);
-        });
-    })
-        
+createMainSectionView.prototype.addPlusMinusEvent=function(item,mainController,headController){
+    var container=item.getElementsByClassName("section-bottom-item-price-add")[0];
+    var cart_button=item.getElementsByClassName("cart-button")[0];
+    cart_button.getElementsByClassName("minus")[0].addEventListener("click",function(event){
+        var quantity=cart_button.getElementsByClassName("quantity")[0].innerText;
+        quantity=Number(quantity)-1;
+        if(quantity===0){
+            item.getElementsByTagName("button")[0].removeAttribute("style");
+            item.getElementsByClassName("cart-button")[0].style.display="none";
+        }
+        cart_button.getElementsByClassName("quantity")[0].innerText=quantity;
+        mainController.setQuantity(container.id,quantity);
+        headController.addCart(container.id);
+    });
+    cart_button.getElementsByClassName("plus")[0].addEventListener("click",function(event){
+        var quantity=cart_button.getElementsByClassName("quantity")[0].innerText;
+        quantity=1+Number(quantity);
+        cart_button.getElementsByClassName("quantity")[0].innerText=quantity;
+        mainController.setQuantity(container.id,quantity);
+        headController.addCart(container.id);
+    }); 
 }
-
-
-
-
-
-
-
-
-

@@ -6,15 +6,14 @@ import {createHeaderControl} from './components/header/header.controller.js'
 import {createHeaderView} from './components/header/header.view.js'
 import {createHeaderModal} from './components/header/header.modal.js'
 
-import { controls } from './utils/constant.js'
-import {init} from './utils/helper.js'
+import {init ,controls} from './index.helper.js'
 
 window.addEventListener("DOMContentLoaded",function(){
-    controls.mController= init(createMainSectionModal,createMainControl,createMainSectionView);
-    controls.hController= init(createHeaderModal,createHeaderControl,createHeaderView);
+    controls.mainController= init(createMainSectionModal,createMainControl,createMainSectionView);
+    controls.headController= init(createHeaderModal,createHeaderControl,createHeaderView);
 
-    controls.mController.init();
-    controls.hController.init();
+    controls.mainController.init();
+    controls.headController.init();
     
 });
 
