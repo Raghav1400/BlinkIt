@@ -8,12 +8,12 @@ export var createHeaderControl=function(spec){
 
 createHeaderControl.prototype.init=function(){
     var second_header_content=this.modal.getSecondHeaderContent();
-    this.view.renderSecondHeader(second_header_content);
-    this.view.addSecondHeaderEvent(this);
+    this.view.renderCategory(second_header_content);
+    this.view.addCategoryEvent(this);
 }
 
-createHeaderControl.prototype.second_header_filter=function(category){
-    controls.mController.category_filter(category);
+createHeaderControl.prototype.callCategoryFilter=function(category){
+    controls.mController.renderCategoryFilter(category);
 }
 
 createHeaderControl.prototype.addCart=function(id){

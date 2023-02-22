@@ -7,28 +7,26 @@ export var createMainControl = function(spec){
 }
 
 createMainControl.prototype.init=function(){
-    var aside_content=this.modal.get_aside_content();
-    var section_bottom_content=this.modal.get_section_bottom_content();
-    this.view.render({aside_content,section_bottom_content});
-    this.view.subcategoryEvent(this);
-    this.view.addButtonEvent(this,controls.hController);
-    this.view.plusMinusEvent(this,controls.hController);
+    var subcategories=this.modal.getSubcategory();
+    var cards=this.modal.getAllCards();
+    this.view.renderData({subcategories,cards},this,controls.hController);
+    this.view.addPlusMinusEvent(this,controls.hController);
 
 }
 
-createMainControl.prototype.asideFilter=function(subcategory){
-    var data=this.modal.get_section_bottom_content_bySubCategory(subcategory);
-    this.view.renderCards(data);
-    this.view.addButtonEvent(this,controls.hController);
-    this.view.plusMinusEvent(this,controls.hController);
+createMainControl.prototype.renderSubcategoryFilter=function(subcategory){
+    var cards=this.modal.getCardsBySubcategory(subcategory);
+    var subcategories=[];
+    this.view.renderData({subcategories,cards},this,controls.hController);
+    this.view.addPlusMinusEvent(this,controls.hController);
 }
 
-createMainControl.prototype.category_filter=function(category){
-    var [asideData,mainData]=this.modal.get_section_bottom_content_byCategory(category);
-    this.view.renderByCategory(asideData,mainData,this);
-    this.view.subcategoryEvent(this);
-    this.view.addButtonEvent(this,controls.hController);
-    this.view.plusMinusEvent(this,controls.hController);
+createMainControl.prototype.renderCategoryFilter=function(category){
+    var content=this.modal.getSubcategoryAndCardsByCategory(category);
+    var subcategories =content.subcategories;
+    var cards=content.cards;
+    this.view.renderData({subcategories,cards},this,controls.hController);
+    this.view.addPlusMinusEvent(this,controls.hController);
 }
 
 createMainControl.prototype.setQuantity=function(itemId,quantity){
