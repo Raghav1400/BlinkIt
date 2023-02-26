@@ -1,0 +1,45 @@
+[
+    {    
+         "id":1,
+         "discount":"1% OFF",
+         "img_src":"./assects/391305a.webp",
+         "img_alt":"Potato Image",
+         "source_time":"Source at 5AM",
+         "name":"Fruit Basket",
+         "weight":"1Kg",
+         "newPrice":"15",
+         "oldPrice":"17" ,
+         "category":"Vegetable & Fruits",
+         "subcategory":"Fresh Fruits",
+         "count":0
+     },
+     {   
+         "id":2,
+         "discount":"1% OFF",
+         "img_src":"./assects/391305a.webp",
+         "img_alt":"Potato Image",
+         "source_time":"Source at 5AM",
+         "name":"New Potato(Aloo)",
+         "weight":"1Kg",
+         "newPrice":"15",
+         "oldPrice":"17" ,
+         "category":"Vegetable & Fruits",
+         "subcategory":"Fresh Vegetables",
+         "count":0
+     },
+     {   
+         "id":3,
+         "discount":"1% OFF",
+         "img_src":"./assects/391305a.webp",
+         "img_alt":"Potato Image",
+         "source_time":"Source at 5AM",
+         "name":"Pepsi",
+         "weight":"1Kg",
+         "newPrice":"15",
+         "oldPrice":"17" ,
+         "category":"Cold Drinks & Juices",
+         "subcategory":"Cold Drinks",
+         "count":0
+    }
+ 
+ ]

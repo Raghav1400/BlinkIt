@@ -1,86 +1,88 @@
-
 export var createSubcategory= function(info){
     var element= document.createElement("div");
-    var element_first_child=document.createElement("div");
-    var element_second_child=document.createElement("div");
-    var img_child=document.createElement("img");
-  
     element.setAttribute("category",info.category);
     element.setAttribute("subcategory",info.subcategory);
-    element_first_child.className="aside-img";
-    element_second_child.className="aside-content";
-    element_second_child.innerText= info.subcategory;
-    img_child.src= info.img_src;
-    img_child.alt= info.img_alt;
-  
-    element.appendChild(element_first_child);
-    element.appendChild(element_second_child);
-    element_first_child.appendChild(img_child);
-    
+    var child= `
+        <div class="aside-img">
+            <img src=${info.img_src} alt=${info.img_alt}>
+        </div>
+        <div class="aside-content">
+            ${info.subcategory}
+        </div>
+    `;
+    element.innerHTML=child;
     return element;
+
 } 
   
 export var createCard = function(info){
     var element= document.createElement("div");
-    var discount_button= document.createElement("div");
-    var img_container= document.createElement("div");
-    var img= document.createElement("img");
-    var source_time= document.createElement("div");
-    var name= document.createElement("div");
-    var weight= document.createElement("div");
-    var price_add_section= document.createElement("div");
-    var price= document.createElement("div");
-    var oldPrice= document.createElement("div");
-    var newPrice= document.createElement("div");
-    var add= document.createElement("button");
-    var cart_button= document.createElement("button");
-    var cart_button_minus= document.createElement("div");
-    var cart_button_quantity= document.createElement("div");
-    var cart_button_plus= document.createElement("div");
-  
+    var child=`
+        <div class="discount-button">
+            ${info.discount}
+        </div>
+        <div class="section-bottom-item-img">
+            <img src=${info.img_src} alt=${info.img_alt}>
+        </div>
+        <div class="section-bottom-item-source-time">
+            ${info.source_time}
+        </div>
+        <div class="section-bottom-item-name">
+            ${info.name}
+        </div>
+        <div class="section-bottom-item-weight">
+            ${info.weight}
+        </div>
+        <div class="section-bottom-item-price-add" id=${info.id}>
+            <div class="price" price="15">
+                <div class="new-price">
+                    ${info.newPrice}
+                </div>
+                <div class="old-price">
+                    ${info.oldPrice}
+                </div>
+            </div>
+            <button style="display: ${setDisplay(info,"add")};">
+                ADD
+            </button>
+            <button class="cart-button" style="display: ${setDisplay(info,"cart")};">
+                <div class="minus">
+                    -
+                </div>
+                <div class="quantity">
+                    ${info.count}
+                </div>
+                <div class="plus">
+                    +
+                </div>
+            </button>
+        </div>
+    `;
     element.setAttribute("category",info.category);
     element.setAttribute("subcategory",info.subcategory);
     element.className="section-bottom-item";
-    discount_button.innerText=info.discount;
-    discount_button.className="discount-button";
-    img_container.className="section-bottom-item-img";
-    img.src=info.img_src;
-    img.alt=info.img_alt;
-    source_time.className="section-bottom-item-source-time";
-    source_time.innerText=info.source_time;
-    name.className="section-bottom-item-name";
-    name.innerText=info.name;
-    weight.className="section-bottom-item-weight";
-    weight.innerText=info.weight;
-    price_add_section.className="section-bottom-item-price-add";
-    price_add_section.setAttribute("id",info.id);
-    price.className="price";
-    price.setAttribute("price",info.newPrice);
-    oldPrice.className="old-price";
-    newPrice.className="new-price";
-    oldPrice.innerText= "₹" + info.oldPrice;
-    newPrice.innerText="₹" + info.newPrice;
-    add.innerText="ADD";
-    cart_button.className="cart-button";
-    cart_button_minus.className="minus";
-    cart_button_quantity.className="quantity";
-    cart_button_plus.className="plus";
-    cart_button_minus.innerText="-";
-    cart_button_quantity.innerText=info.count;
-    cart_button_plus.innerText="+";
-  
-    element.append(discount_button,img_container,source_time,name,weight,price_add_section);
-    price_add_section.append(price,add);
-    price.append(newPrice,oldPrice);
-    img_container.appendChild(img);
-    cart_button.append(cart_button_minus,cart_button_quantity,cart_button_plus);
-    price_add_section.appendChild(cart_button);
-    cart_button.style.display="none";
-  
-    if(info.count>=1){
-        cart_button.style.display="flex";
-        add.style.display="none";
-    }
-  
+    element.innerHTML=child;
     return element;
+}
+
+function setDisplay(info,element){
+    if(element=="cart" && info.count>=1){
+        return "flex";
+    }
+    else if(element=="cart" && info.count==0){
+        return "none";
+    }
+    else if(element=="add" && info.count>=1){
+        return "none";
+    }
+    else{
+        return "";
+    }
+}
+
+export function filter(arr,val,key){
+    var filterData=arr.filter(function(element){
+        return element[key]===val;
+    })
+    return filterData;
 }

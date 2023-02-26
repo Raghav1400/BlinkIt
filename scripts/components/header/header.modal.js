@@ -1,19 +1,21 @@
-import {second_header_content,section_bottom_content,cart} from '../../../data/content.js'
+import categories from '../../../data/categories.json' assert { type: 'json' };
+import cardItems from '../../../data/cards.json' assert { type: 'json' };
+import cart from '../../../data/cart.json' assert { type: 'json' };
+
 
 export var createHeaderModal=function (){
+    this.cart={};
 }
 
 createHeaderModal.prototype.getCategories=function(){
-    return second_header_content;
+    return categories;
 }
 
 createHeaderModal.prototype.updateCartData=function(id){
-    var updateCart;
-    section_bottom_content.forEach(function(element){
+    cardItems.forEach(function(element){
         if(element.id===Number(id)){
             cart[id]=element;
-            updateCart= cart;
         }
     })
-    return updateCart;   
+    return cart;   
 }

@@ -1,0 +1,33 @@
+
+[
+    {
+        "img_src":"./assects/fernando-andrade-nAOZCYcLND8-unsplash.jpg",
+        "img_alt":"Fruits",
+        "subcategory":"Fresh Fruits",
+        "category":"Vegetable & Fruits"
+    },
+    {
+        "img_src":"./assects/fernando-andrade-nAOZCYcLND8-unsplash.jpg",
+        "img_alt":"Vegetables",
+        "subcategory":"Fresh Vegetables",
+        "category":"Vegetable & Fruits"
+    },
+    {
+        "img_src":"./assects/fernando-andrade-nAOZCYcLND8-unsplash.jpg",
+        "img_alt":"Milk",
+        "subcategory":"Milk",
+        "category":"Dairy & Breakfast"
+    },
+    {
+        "img_src":"./assects/fernando-andrade-nAOZCYcLND8-unsplash.jpg",
+        "img_alt":"Juice",
+        "subcategory":"Apple Juice",
+        "category":"Cold Drinks & Juices"
+    },
+    {
+        "img_src":"./assects/fernando-andrade-nAOZCYcLND8-unsplash.jpg",
+        "img_alt":"Soda",
+        "subcategory":"Cold Drinks",
+        "category":"Cold Drinks & Juices"
+    }
+]

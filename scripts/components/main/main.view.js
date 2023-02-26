@@ -25,11 +25,9 @@ createMainSectionView.prototype.renderData= function(content,mainController,head
 
 createMainSectionView.prototype.addSubcategoryEvent= function(item,control){
     item.addEventListener("click",function(event){
-        if(item.contains(event.target)){
-            var subcategoryName=item.getAttribute("subcategory");
-            control.renderSubcategoryFilter(subcategoryName);
-        }
-    });
+        var subcategoryName=item.getAttribute("subcategory");
+        control.renderSubcategoryFilter(subcategoryName);
+    },false);
 }
 
 createMainSectionView.prototype.addAddButtonEvent= function(item,mcontrol,hcontrol){

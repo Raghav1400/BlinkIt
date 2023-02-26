@@ -1,52 +1,31 @@
-import {aside_content, section_bottom_content} from '../../../data/content.js'
-
+import cardItems from '../../../data/cards.json' assert { type: 'json' };
+import subcategoriesItems from '../../../data/subcategories.json' assert { type: 'json' };
+import {filter} from './main.helper.js'
 
 export var createMainSectionModal=function (){
-    
+
 }
 
 createMainSectionModal.prototype.getSubcategory=function(){
-    return aside_content;
+    return subcategoriesItems;
 }
 
 createMainSectionModal.prototype.getAllCards=function(){
-    return section_bottom_content;
+    return cardItems;
 }
 
 createMainSectionModal.prototype.getCardsBySubcategory=function(subcategory){
-    var filterData=[];
-    section_bottom_content.forEach(function(element){
-        if(element.subcategory === subcategory){
-            filterData.push(element);
-        }
-    });
-    return filterData;
+    var res= filter(cardItems,subcategory,"subcategory");
+    return res;
 }
 
 createMainSectionModal.prototype.getSubcategoryAndCardsByCategory=function(category){
-    var subcategories=[];
-    var cards=[];
-
-    section_bottom_content.forEach(function(element){
-        if(element.category === category){
-            cards.push(element);
-        }
-    });
-
-    aside_content.forEach(function(element){
-        if(element.category === category){
-            subcategories.push(element);
-        }
-    });
-
+    var subcategories=filter(subcategoriesItems,category,"category");
+    var cards=filter(cardItems,category,"category");
     return {subcategories,cards};
 }
 
 createMainSectionModal.prototype.setQuantity=function(id,quantity){
-    section_bottom_content.forEach(function(element){
-        if(element.id==id){
-            element.count = Number(quantity);
-            return;
-        }
-    });
+    var res=cardItems.find((element)=>{return element.id==id;})
+    res.count=Number(quantity);
 }
