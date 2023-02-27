@@ -1,4 +1,4 @@
-import { controls } from "../../index.helper.js";
+import { controls } from "../../helper.js";
 export var createHeaderControl=function(spec){
     var {modal,view} =spec;
     this.modal=modal;
