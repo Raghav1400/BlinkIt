@@ -12,10 +12,10 @@ createHeaderModal.prototype.getCategories=function(){
 }
 
 createHeaderModal.prototype.updateCartData=function(id){
-    cardItems.forEach(function(element){
+    cardItems.forEach((element)=>{
         if(element.id===Number(id)){
-            cart[id]=element;
+            this.cart[id]=element;
         }
     })
-    return cart;   
+    return this.cart;   
 }
